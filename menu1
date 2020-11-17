@@ -1,0 +1,45 @@
+package test5;
+import javax.swing.*;
+import javax.imageio.*;
+import java.awt.*;
+public class frame extends JFrame{
+	
+	public frame() {
+		setTitle("menus");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container contentpane=getContentPane();
+		contentpane.setLayout(null);
+		JButton korea=new JButton("korea");
+		JButton japan=new JButton("japan");
+		JButton china=new JButton("china");
+		china.setFont(new Font("Arial",Font.ITALIC,20));
+		china.setBackground(Color.white);
+		china.setLocation(20,265);
+		china.setSize(100,50);
+		japan.setFont(new Font("Arial",Font.ITALIC,20));
+		japan.setBackground(Color.white);
+		japan.setLocation(140, 265);
+		japan.setSize(100,50);
+		korea.setFont(new Font("Arial",Font.ITALIC,20));
+		korea.setBackground(Color.white);
+		korea.setLocation(260,265);
+		korea.setSize(100, 50);
+		contentpane.add(china);
+		contentpane.add(japan);
+		contentpane.add(korea);
+		ImageIcon img=new ImageIcon("C:/Users/gus55/Desktop/image/menus.jpg");
+		JLabel imageLabel=new JLabel(img);
+		imageLabel.setLocation(0, 0);
+		imageLabel.setSize(400,600);
+		contentpane.add(imageLabel);
+		setSize(400,600);
+		setVisible(true);
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		frame start=new frame();
+	}
+
+}
