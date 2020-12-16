@@ -1,0 +1,463 @@
+package test5;
+import test6.*;
+import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.*;
+import javax.imageio.*;
+import java.awt.*;
+public class frame extends JFrame{
+	
+	//기본 생성자
+	public frame() {
+		setTitle("menus");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container contentpane=getContentPane();
+		contentpane.setLayout(null);
+		JButton korea=new JButton("korea");
+		JButton japan=new JButton("italy");
+		JButton china=new JButton("china");
+		JButton map=new JButton("map");
+		JButton back=new JButton("back");
+		JButton today=new JButton("today");
+		back.setFont(new Font("Arial",Font.ITALIC,20));
+		back.setBackground(Color.white);
+		back.setLocation(380,340);
+		back.setSize(100,50);
+		map.setFont(new Font("Arial",Font.ITALIC,20));
+		map.setBackground(Color.white);
+		map.setLocation(260,340);
+		map.setSize(100,50);
+		today.setFont(new Font("Arial",Font.ITALIC,20));
+		today.setBackground(Color.white);
+		today.setLocation(140,340);
+		today.setSize(100,50);
+		china.setFont(new Font("Arial",Font.ITALIC,20));
+		china.setBackground(Color.white);
+		china.setLocation(140,265);
+		china.setSize(100,50);
+		japan.setFont(new Font("Arial",Font.ITALIC,20));
+		japan.setBackground(Color.white);
+		japan.setLocation(260, 265);
+		japan.setSize(100,50);
+		korea.setFont(new Font("Arial",Font.ITALIC,20));
+		korea.setBackground(Color.white);
+		korea.setLocation(380,265);
+		korea.setSize(100, 50);
+		contentpane.add(china);
+		contentpane.add(japan);
+		contentpane.add(korea);
+		contentpane.add(map);
+		contentpane.add(back);
+		contentpane.add(today);
+		ImageIcon img=new ImageIcon("C:/Users/gus55/Desktop/image/menus.jpg");
+		JLabel imageLabel=new JLabel(img);
+		imageLabel.setLocation(0, 0);
+		imageLabel.setSize(625,650);
+		contentpane.add(imageLabel);
+		china.addMouseListener(new click1());
+		korea.addMouseListener(new click2());
+		japan.addMouseListener(new click3());
+		map.addMouseListener(new map());
+		today.addMouseListener(new today());
+		setSize(625,650);
+		setVisible(true);
+	}
+	
+	//마우스 클릭 반응 함수
+	class click1 extends MouseAdapter{
+		public void mousePressed(MouseEvent e) {
+			frame second=new frame(1);
+			second.setVisible(true);
+			
+		}
+	}
+	class click2 extends MouseAdapter{
+		public void mousePressed(MouseEvent e) {
+			frame second=new frame(2);
+			second.setVisible(true);
+			
+		}
+	}
+	class click3 extends MouseAdapter{
+		public void mousePressed(MouseEvent e) {
+			frame second=new frame(3);
+			second.setVisible(true);
+			
+		}
+	}
+	class back extends MouseAdapter{
+		public void mousePressed(MouseEvent e) {
+			frame second=new frame();
+			second.setVisible(true);
+			
+		}
+	}
+	class map extends MouseAdapter{
+		public void mousePressed(MouseEvent e) {
+			Main map=new Main();
+			map.setVisible(true);
+			
+		}
+	}
+	class today extends MouseAdapter{
+		public void mousePressed(MouseEvent e) {
+			frame today=new frame(4);
+			today.setVisible(true);
+		}
+	}
+	
+	//메뉴에서 다음 메뉴로 넘어가는 생성자
+	frame(int first){
+		if(first==1) {
+		setTitle("china");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container contentpane=getContentPane();
+		contentpane.setLayout(null);
+		JButton p_1=new JButton("place1");
+		JButton p_2=new JButton("place2");
+		JButton p_3=new JButton("place3");
+		JButton p_4=new JButton("back");
+		p_4.setFont(new Font("Arial",Font.ITALIC,20));
+		p_4.setBackground(Color.white);
+		p_4.setOpaque(false);
+		p_4.setLocation(20,460);
+		p_4.setSize(100,40);
+		p_1.setFont(new Font("Arial",Font.ITALIC,20));
+		p_1.setBackground(Color.white);
+		p_1.setOpaque(false);
+		p_1.setLocation(20,20);
+		p_1.setSize(100,40);
+		p_2.setFont(new Font("Arial",Font.ITALIC,20));
+		p_2.setBackground(Color.white);
+		p_2.setOpaque(false);
+		p_2.setLocation(20, 160);
+		p_2.setSize(100,40);
+		p_3.setFont(new Font("Arial",Font.ITALIC,20));
+		p_3.setBackground(Color.white);
+		p_3.setOpaque(false);
+		p_3.setLocation(20,300);
+		p_3.setSize(100, 40);
+		contentpane.add(p_1);
+		contentpane.add(p_2);
+		contentpane.add(p_3);
+		contentpane.add(p_4);
+		p_4.addMouseListener(new back());
+		p_1.addActionListener(new food_chana());
+		p_2.addActionListener(new food_chana());
+		p_3.addActionListener(new food_chana());
+		ImageIcon img=new ImageIcon("C:/Users/gus55/Desktop/image/chanaes.jpg");
+		JLabel imageLabel=new JLabel(img);
+		imageLabel.setLocation(0, 0);
+		imageLabel.setSize(625,650);
+		contentpane.add(imageLabel);
+		setSize(625,650);
+		setVisible(false);
+		}
+		
+		
+		
+		else if(first==2) {
+			setTitle("korea");
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			Container contentpane=getContentPane();
+			contentpane.setLayout(null);
+			JButton p_1=new JButton("place1");
+			JButton p_2=new JButton("place2");
+			JButton p_3=new JButton("place3");
+			JButton p_4=new JButton("back");
+			p_4.setFont(new Font("Arial",Font.ITALIC,20));
+			p_4.setBackground(Color.white);
+			p_4.setOpaque(false);
+			p_4.setLocation(20,460);
+			p_4.setSize(100,40);
+			p_1.setFont(new Font("Arial",Font.ITALIC,20));
+			p_1.setBackground(Color.white);
+			p_1.setOpaque(false);
+			p_1.setLocation(20,20);
+			p_1.setSize(100,40);
+			p_2.setFont(new Font("Arial",Font.ITALIC,20));
+			p_2.setBackground(Color.white);
+			p_2.setOpaque(false);
+			p_2.setLocation(20, 160);
+			p_2.setSize(100,40);
+			p_3.setFont(new Font("Arial",Font.ITALIC,20));
+			p_3.setBackground(Color.white);
+			p_3.setOpaque(false);
+			p_3.setLocation(20,300);
+			p_3.setSize(100, 40);
+			contentpane.add(p_1);
+			contentpane.add(p_2);
+			contentpane.add(p_3);
+			contentpane.add(p_4);
+			p_1.addActionListener(new food_korea());
+			p_2.addActionListener(new food_korea());
+			p_3.addActionListener(new food_korea());
+			p_4.addMouseListener(new back());
+			ImageIcon img=new ImageIcon("C:/Users/gus55/Desktop/image/sumi.jpg");
+			JLabel imageLabel=new JLabel(img);
+			imageLabel.setLocation(0, 0);
+			imageLabel.setSize(625,650);
+			contentpane.add(imageLabel);
+			setSize(620,650);
+			setVisible(false);
+		}
+		else if(first==4) {
+			setTitle("today-menu");
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			Container contentpane=getContentPane();
+			contentpane.setLayout(null);
+			JButton p_1=new JButton("First");
+			JButton p_2=new JButton("Second");
+			JButton p_3=new JButton("Third");
+			JButton p_4=new JButton("back");
+			p_4.setFont(new Font("Arial",Font.ITALIC,20));
+			p_4.setBackground(Color.white);
+			p_4.setOpaque(false);
+			p_4.setLocation(430,500);
+			p_4.setSize(150,40);
+			p_1.setFont(new Font("Arial",Font.ITALIC,20));
+			p_1.setBackground(Color.white);
+			p_1.setOpaque(false);
+			p_1.setLocation(30,300);
+			p_1.setSize(150,60);
+			p_2.setFont(new Font("Arial",Font.ITALIC,20));
+			p_2.setBackground(Color.white);
+			p_2.setOpaque(false);
+			p_2.setLocation(230, 300);
+			p_2.setSize(150,60);
+			p_3.setFont(new Font("Arial",Font.ITALIC,20));
+			p_3.setBackground(Color.white);
+			p_3.setOpaque(false);
+			p_3.setLocation(430,300);
+			p_3.setSize(150, 60);
+			contentpane.add(p_1);
+			contentpane.add(p_2);
+			contentpane.add(p_3);
+			contentpane.add(p_4);
+			p_1.addActionListener(new random());
+			p_2.addActionListener(new random());
+			p_3.addActionListener(new random());
+			p_4.addMouseListener(new back());
+			ImageIcon img=new ImageIcon("C:/Users/gus55/Desktop/image/menus.jpg");
+			JLabel imageLabel=new JLabel(img);
+			imageLabel.setLocation(0, 0);
+			imageLabel.setSize(625,650);
+			contentpane.add(imageLabel);
+			setSize(620,650);
+			setVisible(false);
+		}
+		else {
+			setTitle("italy");
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			Container contentpane=getContentPane();
+			contentpane.setLayout(null);
+			JButton p_1=new JButton("place1");
+			JButton p_2=new JButton("place2");
+			JButton p_3=new JButton("place3");
+			JButton p_4=new JButton("back");
+			p_4.setFont(new Font("Arial",Font.ITALIC,20));
+			p_4.setBackground(Color.white);
+			p_4.setOpaque(false);
+			p_4.setLocation(20,460);
+			p_4.setSize(100,40);
+			p_1.setFont(new Font("Arial",Font.ITALIC,20));
+			p_1.setBackground(Color.white);
+			p_1.setOpaque(false);
+			p_1.setLocation(20,20);
+			p_1.setSize(100,40);
+			p_2.setFont(new Font("Arial",Font.ITALIC,20));
+			p_2.setBackground(Color.white);
+			p_2.setOpaque(false);
+			p_2.setLocation(20, 160);
+			p_2.setSize(100,40);
+			p_3.setFont(new Font("Arial",Font.ITALIC,20));
+			p_3.setBackground(Color.white);
+			p_3.setOpaque(false);
+			p_3.setLocation(20,300);
+			p_3.setSize(100, 40);
+			contentpane.add(p_1);
+			contentpane.add(p_2);
+			contentpane.add(p_3);
+			contentpane.add(p_4);
+			p_4.addMouseListener(new back());
+			p_1.addActionListener(new food_italy());
+			p_2.addActionListener(new food_italy());
+			p_3.addActionListener(new food_italy());
+			ImageIcon img=new ImageIcon("C:/Users/gus55/Desktop/image/ital.png");
+			JLabel imageLabel=new JLabel(img);
+			imageLabel.setLocation(0, 0);
+			imageLabel.setSize(625,650);
+			contentpane.add(imageLabel);
+			setSize(625,650);
+			setVisible(false);
+			
+		}
+		
+	}
+	
+	class random implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			JButton b=(JButton)e.getSource();
+			if(b.getText().equals("First")) {
+			b.setFont(new Font("궁서체",Font.PLAIN,25));	
+			int i=0;
+			i=(int)(Math.random()*6);
+			if(i==1)
+				b.setText("한식");
+			else if(i==2)
+				b.setText("중식");
+			else if(i==3)
+				b.setText("양식");
+			else if(i==4)
+				b.setText("일식");
+			else if(i==5)
+				b.setText("퓨전");
+			else
+				b.setText("빵!");
+			}
+			else if (b.getText().equals("Second")){
+				b.setFont(new Font("궁서체",Font.PLAIN,25));	
+				int i=0;
+				i=(int)(Math.random()*2);
+				if(i==1)
+					b.setText("차가운것");
+				else
+					b.setText("따뜻한것");
+			}
+			else if (b.getText().equals("Third")){
+				b.setFont(new Font("궁서체",Font.PLAIN,25));	
+				int i=0;
+				i=(int)(Math.random()*2);
+				if(i==1)
+					b.setText("매운것");
+				else
+					b.setText("안매운것");
+			}
+			
+		}
+	}	
+	//클릭시 해당 음식점 사이트 주소 출력
+	class food_italy implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			JButton b=(JButton)e.getSource();
+			if(b.getText().equals("place1")) {
+			JTextArea place_1=new JTextArea("리틀넥 청담\n전화번호:0507-1400-1468\n주소:강남구 도산대로51길17\n대표메뉴\n하우스 바질 스테이크(26000)\n아보카도 토스트(12000)\n[URL]:http://instagram.com/littleneckseoul",30,40);
+			place_1.setBackground(Color.white);
+			place_1.setForeground(Color.white);
+			place_1.setOpaque(false);
+			b.add(place_1);
+			b.setText("");
+			b.setSize(300,135);
+			setVisible(true);
+				
+			}
+			else if (b.getText().equals("place2")){
+				JTextArea place_1=new JTextArea("오엔\n전화번호:0507-1400-1582\n주소:강남구 압구정로11길37-30\n대표메뉴\nT-bone SET(2인180000)\nCouple Set(2인89000)\n[URL]:http:www.onriver.co.kr",30,40);
+				place_1.setBackground(Color.white);
+				place_1.setForeground(Color.white);
+				place_1.setOpaque(false);
+				b.add(place_1);
+				b.setText("");
+				b.setSize(300,135);
+				setVisible(true);
+			}
+			else if (b.getText().equals("place3")){
+				JTextArea place_1=new JTextArea("바빌리안테이블\n전화번호:0507-1400-3305\n주소:강남구 압구정로46길 5-2\n대표메뉴\n치즈 퐁듀스테이크(39600)\n연어 스테이크(29700)\n분위기:아늑한,유럽풍,분위기있는",30,40);
+				place_1.setBackground(Color.white);
+				place_1.setForeground(Color.white);
+				place_1.setOpaque(false);
+				b.add(place_1);
+				b.setText("");
+				b.setSize(300,135);
+				setVisible(true);
+			}
+			
+		}
+	}	
+		//한식
+		class food_korea implements ActionListener{
+			public void actionPerformed(ActionEvent e) {
+				JButton b=(JButton)e.getSource();
+				if(b.getText().equals("place1")) {
+				JTextArea place_1=new JTextArea("삼원가든\n전화번호:02-548-3030\n주소:강남구 신사동623-5\n대표메뉴\n삼원전통 양념갈비(46000)\n한우 생갈비(85000)\n[URL]:http:www.samwongarden.com",30,40);
+				place_1.setBackground(Color.white);
+				place_1.setForeground(Color.white);
+				place_1.setOpaque(false);
+				b.add(place_1);
+				b.setText("");
+				b.setSize(300,135);
+				setVisible(true);
+					
+				}
+				else if (b.getText().equals("place2")){
+					JTextArea place_1=new JTextArea("뱃고동\n전화번호:0507-1413-8008\n주소:강남구 언주로172길54\n대표메뉴\n오징어불고기 백반(7500)\n낙지불고기 백반(8000)\n특징:맛있는 녀석들290회,20.09.11",30,40);
+					place_1.setBackground(Color.white);
+					place_1.setForeground(Color.white);
+					place_1.setOpaque(false);
+					b.add(place_1);
+					b.setText("");
+					b.setSize(300,135);
+					setVisible(true);
+				}
+				else if (b.getText().equals("place3")){
+					JTextArea place_1=new JTextArea("강남면옥 본점\n전화번호:02-3446-5539\n주소:강남구 논현로152길 34\n대표메뉴\n회 냉변(11000)\n갈비찜(소)(45000)\n[URL]:www.강남면옥.net",30,40);
+					place_1.setBackground(Color.white);
+					place_1.setForeground(Color.white);
+					place_1.setOpaque(false);
+					b.add(place_1);
+					b.setText("");
+					b.setSize(300,135);
+					setVisible(true);
+				}
+				
+			}
+		}	
+			//중식
+			class food_chana implements ActionListener{
+				public void actionPerformed(ActionEvent e) {
+					JButton b=(JButton)e.getSource();
+					if(b.getText().equals("place1")) {
+					JTextArea place_1=new JTextArea("일일향\n전화번호:0507-1328-6154\n주소:강남구 논현로168길30\n대표메뉴\n자장면(7000)\n찹쌀 탕수육(26000)\n[URL]:www.yilyilhyang.com",30,40);
+					place_1.setBackground(Color.white);
+					place_1.setForeground(Color.black);
+					place_1.setOpaque(false);
+					b.add(place_1);
+					b.setText("");
+					b.setSize(300,135);
+					setVisible(true);
+						
+					}
+					else if (b.getText().equals("place2")){
+						JTextArea place_1=new JTextArea("쭈즈\n전화번호:02-6081-9888\n주소:강남구 도산대로17길13\n대표메뉴\n소룡표(3500)\n쇼마이(4000)\n[URL]:www.facebook.com/jooos.dimsum",30,40);
+						place_1.setBackground(Color.white);
+						place_1.setForeground(Color.black);
+						place_1.setOpaque(false);
+						b.add(place_1);
+						b.setText("");
+						b.setSize(300,135);
+						setVisible(true);
+					}
+					else if (b.getText().equals("place3")){
+						JTextArea place_1=new JTextArea("무탄\n전화번호:02-549-9339\n주소:강남구 논현로176길 22 1층\n대표메뉴\n전복 양장피(55000)\n해물 누룽지탕(55000)\n[URL]:https://catchtable.co.kr/mutan",30,40);
+						place_1.setBackground(Color.white);
+						place_1.setForeground(Color.black);
+						place_1.setOpaque(false);
+						b.add(place_1);
+						b.setText("");
+						b.setSize(300,135);
+						setVisible(true);
+					}
+					
+				}
+			}	
+		
+	
+	
+	//메인 시작
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		frame start=new frame();
+	}
+
+}
