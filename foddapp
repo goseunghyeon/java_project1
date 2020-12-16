@@ -1,0 +1,233 @@
+package test7;
+import test5.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class foddapp {
+
+	private JFrame frame;
+	private JTextField id;
+	private JPasswordField password;
+	private JTextField ID;
+	private JPasswordField PW;
+	private JTextField NAME;
+	private JTextField EMAIL;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					foddapp window = new foddapp();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public foddapp() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		Customer customer = new Customer();
+		frame = new JFrame();
+		frame.getContentPane().setLayout(null);
+		ImagePanel welcomePanel = new ImagePanel(new ImageIcon("C:\\Users\\gus55\\Desktop\\image\\food2.jpg").getImage());
+		welcomePanel.setBounds(0, 0, 625, 650);
+		frame.setSize(welcomePanel.getWidth(),welcomePanel.getHeight());
+		
+		
+		JPanel registerPanel = new JPanel();
+		registerPanel.setBounds(0, 0, 929, 691);
+		frame.getContentPane().add(registerPanel);
+		registerPanel.setBackground(Color.WHITE);
+		registerPanel.setLayout(null);
+		registerPanel.setVisible(false);
+		
+		JLabel lblRegister = new JLabel("회원가입");
+		lblRegister.setFont(new Font("휴먼편지체", Font.BOLD, 40));
+		lblRegister.setBounds(251, 24, 235, 91);
+		registerPanel.add(lblRegister);
+		
+		JLabel lblNewLabel_1 = new JLabel("ID  :");
+		lblNewLabel_1.setFont(new Font("휴먼편지체", Font.BOLD, 28));
+		lblNewLabel_1.setBounds(93, 154, 67, 54);
+		registerPanel.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_1_1_1 = new JLabel("NAME :");
+		lblNewLabel_1_1_1.setFont(new Font("휴먼편지체", Font.BOLD, 28));
+		lblNewLabel_1_1_1.setBounds(93, 288, 120, 54);
+		registerPanel.add(lblNewLabel_1_1_1);
+		
+		JLabel lblNewLabel_1_1_1_1 = new JLabel("E-MAIL :");
+		lblNewLabel_1_1_1_1.setFont(new Font("휴먼편지체", Font.BOLD, 28));
+		lblNewLabel_1_1_1_1.setBounds(93, 352, 144, 54);
+		registerPanel.add(lblNewLabel_1_1_1_1);
+		
+		JLabel lblNewLabel_1_1_1_2 = new JLabel("PW :");
+		lblNewLabel_1_1_1_2.setFont(new Font("휴먼편지체", Font.BOLD, 28));
+		lblNewLabel_1_1_1_2.setBounds(90, 224, 89, 54);
+		registerPanel.add(lblNewLabel_1_1_1_2);
+		
+		ID = new JTextField();
+		ID.setToolTipText("ID");
+		ID.setFont(new Font("HY그래픽M", Font.PLAIN, 25));
+		ID.setColumns(10);
+		ID.setBounds(236, 158, 343, 45);
+		registerPanel.add(ID);
+		
+		PW = new JPasswordField();
+		PW.setBounds(236, 224, 343, 45);
+		registerPanel.add(PW);
+		
+		NAME = new JTextField();
+		NAME.setToolTipText("ID");
+		NAME.setFont(new Font("HY그래픽M", Font.PLAIN, 25));
+		NAME.setColumns(10);
+		NAME.setBounds(236, 292, 343, 45);
+		registerPanel.add(NAME);
+		
+		EMAIL = new JTextField();
+		EMAIL.setToolTipText("ID");
+		EMAIL.setFont(new Font("HY그래픽M", Font.PLAIN, 25));
+		EMAIL.setColumns(10);
+		EMAIL.setBounds(236, 356, 343, 45);
+		registerPanel.add(EMAIL);
+		
+		JButton btnNewButton_2 = new JButton("가입");
+		btnNewButton_2.setBounds(427, 431, 89, 36);
+		registerPanel.add(btnNewButton_2);
+		btnNewButton_2.addActionListener(new ActionListener() {
+		
+			public void actionPerformed(ActionEvent e) {
+				String IDTxt = ID.getText();
+				String PWTxt = PW.getText();
+				String NAMETxt = NAME.getText();
+				String EmailTxt = EMAIL.getText();
+				
+				customer.createCustomer(IDTxt,PWTxt,NAMETxt,EmailTxt);
+				JOptionPane.showMessageDialog(null, "회원가입을 축하합니다!!.");
+				welcomePanel.setVisible(true);
+				registerPanel.setVisible(false);
+			}
+			
+		});
+		
+		JButton btnNewButton_2_1 = new JButton("취소");
+		btnNewButton_2_1.setBounds(539, 431, 89, 36);
+		registerPanel.add(btnNewButton_2_1);
+		btnNewButton_2_1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				welcomePanel.setVisible(true);
+				registerPanel.setVisible(false);
+			}
+			
+		});
+		frame.getContentPane().add(welcomePanel);
+		frame.getContentPane().add(welcomePanel);
+		
+		welcomePanel.setLayout(null);
+		
+		JLabel lblLogIn = new JLabel("Log In");
+		lblLogIn.setBounds(453, 225, 218, 66);
+		lblLogIn.setFont(new Font("휴먼편지체", Font.BOLD, 30));
+		welcomePanel.add(lblLogIn);
+		
+		id = new JTextField();
+		id.setBounds(397, 301, 218, 45);
+		id.setFont(new Font("HY그래픽M", Font.PLAIN, 25));
+		id.setToolTipText("ID");
+		welcomePanel.add(id);
+		id.setColumns(10);
+		
+		password = new JPasswordField();
+		password.setBounds(397, 356, 218, 45);
+		welcomePanel.add(password);
+		
+		JLabel lblNewLabel = new JLabel("ID :");
+		lblNewLabel.setBounds(336, 297, 67, 54);
+		lblNewLabel.setFont(new Font("휴먼편지체", Font.BOLD, 28));
+		welcomePanel.add(lblNewLabel);
+		
+		JLabel lblPs = new JLabel("PW :");
+		lblPs.setBounds(324, 348, 73, 54);
+		lblPs.setFont(new Font("휴먼편지체", Font.BOLD, 28));
+		welcomePanel.add(lblPs);
+		
+		JButton btnNewButton = new JButton("로그인");
+		btnNewButton.setBounds(397, 411, 97, 30);
+		btnNewButton.setFont(new Font("휴먼편지체", Font.BOLD, 25));
+		btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					String txid = ID.getText();
+					String txpass = PW.getText();
+					
+					if(txid.equals(id.getText())&&txpass.equals(password.getText())) {
+						JOptionPane.showMessageDialog(null, "로그인이 완료되었습니다.");
+						welcomePanel.setVisible(false); 
+						frame show=new frame();
+						frame.setVisible(false);
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "로그인이 실패하였습니다.");
+					}
+				}
+			
+		});
+		
+		welcomePanel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("회원가입");
+		btnNewButton_1.setBounds(506, 411, 110, 30);
+		btnNewButton_1.setFont(new Font("휴먼편지체", Font.BOLD, 20));
+		welcomePanel.add(btnNewButton_1);
+		
+		JLabel lblGiveMeA = new JLabel("Give me a food?");
+		lblGiveMeA.setBounds(170, 55, 416, 98);
+		lblGiveMeA.setFont(new Font("휴먼편지체", Font.BOLD, 40));
+		welcomePanel.add(lblGiveMeA);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				welcomePanel.setVisible(false);
+				registerPanel.setVisible(true);
+			}
+			
+		});
+		frame.setResizable(false);
+		//frame.setLocationRelativeTo(null);
+		frame.setLocation(0,0);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+}
+
+
+
