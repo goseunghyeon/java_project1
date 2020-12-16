@@ -1,0 +1,88 @@
+package test7;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+public class Customer {
+/*
+	public static void main(String[] args) {
+		createTable();
+		createCustomer("sseq007","1234","Dan","sseq@naver.com");
+		ArrayList<String> list = getCustomers();
+		for(String item: list) {
+			System.out.println(item);
+		}
+	}
+*/
+	public static ArrayList<String> getCustomers(){
+		try {
+			Connection con = getConnection();
+			PreparedStatement statement = con.prepareStatement("Select ID,PW,NAME,EMAIL FROM customer");
+			ResultSet results = statement.executeQuery();
+			ArrayList<String> list = new ArrayList<String>();
+			while(results.next()) {
+				list.add("Id :"+ results.getString("ID") + " Pw "+results.getString("PW") + " Name "+results.getString("NAME") + " Email "+results.getString("EMAIL"));
+			}
+			System.out.println("The data has been fetched");
+			return list;
+			
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+	public static void createCustomer(String ID,String PW,String NAME,String EMAIL) {
+		try {
+			Connection con = getConnection();
+			PreparedStatement insert = con.prepareStatement(""
+			+"INSERT INTO customer"
+			+ "(ID,PW,NAME,EMAIL)"
+			+"VALUE"
+			+"('"+ID+"','"+PW+"','"+NAME+"','"+EMAIL+"')");
+			insert.executeUpdate();
+			System.out.println("The data has been saved!");
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public static void createTable() {
+		try {
+			Connection con = getConnection();
+			PreparedStatement create = con.prepareStatement(
+					"CREATE TABLE IF NOT EXISTS "
+					+ "customer(idd int NOT NULL AUTO_INCREMENT,"
+					+ "ID varChar(255),"
+					+ "PW varChar(255),"
+					+ "NAME varChar(255),"
+					+ "EMAIL varChar(255),"
+					+ "PRIMARY KEY(idd))");
+			create.execute();
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			System.out.println("Table successfully created");
+		}
+	}
+	
+	
+	public static Connection getConnection() {
+		try {
+			String driver= "com.mysql.cj.jdbc.Driver";
+			String url="jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9382428";
+			String user = "sql9382428";
+			String pass = "YjubIDLsw3";
+			Class.forName(driver);
+			Connection con= DriverManager.getConnection(url,user,pass);
+			System.out.println("The Connection Sucessful");
+			return con;
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+
+}
